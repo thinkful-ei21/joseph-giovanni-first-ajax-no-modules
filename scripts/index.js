@@ -53,7 +53,8 @@ const decorateResponse = function(response) {
     };
 
   });
-  return  responses;
+
+  addVideosToStore(responses);
 };
 
 
@@ -64,11 +65,9 @@ const decorateResponse = function(response) {
 // TEST IT!
 const generateVideoItemHtml = function(video) {
   
-
-  return `
-   <li>${video.title}</li>
-   <li>${video.thumbnail}</li>
-  `;
+  return `<li> <a> ${video.title}
+  <img src="${video.thumbnail}" alt="${video.title}">
+  </a>`;
 };
 
 // TASK:
@@ -77,6 +76,7 @@ const generateVideoItemHtml = function(video) {
 // TEST IT!
 const addVideosToStore = function(videos) {
   store.videos = videos;
+  render();
 
 };
 
@@ -86,10 +86,13 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-  
+  const output = store.videos.map(item =>generateVideoItemHtml(item));
+  $('.results').html(output);
 };
 
-console.log();
+
+fetchVideos('dogs', decorateResponse);
+
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
