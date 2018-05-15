@@ -4,12 +4,14 @@
 
 const STORE = (function(){
 
+  const setVideos = function(videos) {
+    this.videos = videos;
+   // console.log(this.videos);
+  };
+
   return {
     videos: [],
-    setVideos: function(videos) {
-      this.videos = videos;
-      render();
-    },
+    setVideos: setVideos,
   };
 
 

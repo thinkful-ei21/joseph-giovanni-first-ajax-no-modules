@@ -1,5 +1,5 @@
 'use strict';
-/*global STORE , Api */
+/*global STORE , Api, VideoList */
 
 
 
@@ -42,12 +42,6 @@
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
-const generateVideoItemHtml = function(video) {
-  
-  return `<li> <div><a> ${video.title} </a>
-     <img src="${video.thumbnail}" alt="${video.title}"><div>>
-    </li>`;
-};
 
 
 // TASK:
@@ -55,10 +49,7 @@ const generateVideoItemHtml = function(video) {
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {
-  const output = STORE.videos.map(item =>generateVideoItemHtml(item));
-  $('.results').html(output);
-};
+
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
@@ -71,20 +62,11 @@ const render = function() {
 //   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
-const handleFormSubmit = function() {
-  $('form').submit(function(event){
-    event.preventDefault();
-    const formInput = $('#search-term').val();
-    Api.fetchVideos(formInput, STORE.setVideos.bind(STORE));
-    event.target.reset();
-    render();
-  });
-  
-};
+
 
 // When DOM is ready:
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
-  handleFormSubmit();
+  VideoList.handleFormSubmit();
 });

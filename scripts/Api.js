@@ -23,8 +23,8 @@ const Api = (function(){
         };
   
       });
-      console.log(responses);
-      callback(responses);
+      STORE.setVideos(responses);
+      callback();
     };
 
     $.getJSON(BASE_URL, requestObject, decorateResponse);
