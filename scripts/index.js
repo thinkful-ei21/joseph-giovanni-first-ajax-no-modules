@@ -45,8 +45,18 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 const decorateResponse = function(response) {
-  
+  const responses = response.items.map(function(item){
+    return {
+      id:item.id,
+      title:item.snippet.title,
+      thumbnail:item.snippet.thumbnails.medium,
+    };
+
+  });
+  return  responses;
 };
+
+
 
 // TASK:
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
@@ -58,9 +68,10 @@ const generateVideoItemHtml = function(video) {
 
 // TASK:
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
-// objects and sets the array as the value held in store.items
+// objects and sets the array as the value held in store.videos
 // TEST IT!
 const addVideosToStore = function(videos) {
+  store.videos = videos;
 
 };
 
@@ -72,6 +83,8 @@ const addVideosToStore = function(videos) {
 const render = function() {
 
 };
+
+fetchVideos('cats', addVideosToStore);
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
