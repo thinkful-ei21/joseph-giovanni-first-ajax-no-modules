@@ -1,4 +1,5 @@
 'use strict';
+/*global STORE */
 
 const API_KEY = 'AIzaSyAVE0ZXkNk8gcvO4Px2a5_En7CWuRyLvIc';
 
@@ -14,9 +15,6 @@ const API_KEY = 'AIzaSyAVE0ZXkNk8gcvO4Px2a5_En7CWuRyLvIc';
   }
 
 */
-const store = {
-  videos: []
-};
 
 // TASK: Add the Youtube Search API Base URL here:
 // Documentation is here: https://developers.google.com/youtube/v3/docs/search/list#usage
@@ -54,7 +52,8 @@ const decorateResponse = function(response) {
 
   });
 
-  addVideosToStore(responses);
+  STORE.setVideos(responses);
+  render();
 };
 
 
@@ -65,20 +64,11 @@ const decorateResponse = function(response) {
 // TEST IT!
 const generateVideoItemHtml = function(video) {
   
-  return `<li> <a> ${video.title} </a>
-  <a> <img src="${video.thumbnail}" alt="${video.title}</a>">
-  </li>`;
+  return `<li> <div><a> ${video.title} </a>
+     <img src="${video.thumbnail}" alt="${video.title}"><div>>
+    </li>`;
 };
 
-// TASK:
-// 1. Create a `addVideosToStore` function that receives an array of decorated video 
-// objects and sets the array as the value held in store.videos
-// TEST IT!
-const addVideosToStore = function(videos) {
-  store.videos = videos;
-  render();
-
-};
 
 // TASK:
 // 1. Create a `render` function
@@ -86,7 +76,7 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-  const output = store.videos.map(item =>generateVideoItemHtml(item));
+  const output = STORE.videos.map(item =>generateVideoItemHtml(item));
   $('.results').html(output);
 };
 
