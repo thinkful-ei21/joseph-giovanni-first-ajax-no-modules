@@ -47,9 +47,9 @@ const fetchVideos = function(searchTerm, callback) {
 const decorateResponse = function(response) {
   const responses = response.items.map(function(item){
     return {
-      id:item.id,
+      id:item.id.videoID,
       title:item.snippet.title,
-      thumbnail:item.snippet.thumbnails.medium,
+      thumbnail:item.snippet.thumbnails.medium.url,
     };
 
   });
@@ -63,7 +63,12 @@ const decorateResponse = function(response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function(video) {
+  
 
+  return `
+   <li>${video.title}</li>
+   <li>${video.thumbnail}</li>
+  `;
 };
 
 // TASK:
@@ -81,10 +86,10 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-
+  
 };
 
-fetchVideos('cats', addVideosToStore);
+console.log();
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
