@@ -65,9 +65,9 @@ const decorateResponse = function(response) {
 // TEST IT!
 const generateVideoItemHtml = function(video) {
   
-  return `<li> <a> ${video.title}
-  <img src="${video.thumbnail}" alt="${video.title}">
-  </a>`;
+  return `<li> <a> ${video.title} </a>
+  <a> <img src="${video.thumbnail}" alt="${video.title}</a>">
+  </li>`;
 };
 
 // TASK:
@@ -90,10 +90,6 @@ const render = function() {
   $('.results').html(output);
 };
 
-
-fetchVideos('dogs', decorateResponse);
-
-
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
 // 2. The listener should:
@@ -106,11 +102,18 @@ fetchVideos('dogs', decorateResponse);
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function() {
-
+  $('form').submit(function(event){
+    event.preventDefault();
+    const formInput = $('#search-term').val();
+    fetchVideos(formInput, decorateResponse);
+    event.target.reset();
+  });
+  
 };
 
 // When DOM is ready:
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
+  handleFormSubmit();
 });
