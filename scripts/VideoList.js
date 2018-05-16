@@ -1,7 +1,9 @@
 'use strict';
 
+import {STORE} from './STORE.js';
+import {Api} from './Api.js';
 
-const VideoList =(function(){
+export const VideoList =(function(){
 
   const generateListItem = function(video) {
   
@@ -30,7 +32,7 @@ const VideoList =(function(){
   return {
     generateListItem: generateListItem,
     render:render,
-    handleFormSubmit:handleFormSubmit
-  };
+    handleFormSubmit:handleFormSubmit,
+    };
 
 }());

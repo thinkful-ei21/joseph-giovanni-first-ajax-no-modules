@@ -2,11 +2,10 @@
 /*global render */
 
 
-const STORE = (function(){
+export const STORE = (function(){
 
   const setVideos = function(videos) {
     this.videos = videos;
-   // console.log(this.videos);
   };
 
   return {

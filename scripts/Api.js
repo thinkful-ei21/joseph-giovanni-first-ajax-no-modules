@@ -1,7 +1,9 @@
 /* global STORE , render*/
 'use strict';
 
-const Api = (function(){
+import {STORE} from './STORE.js';
+
+export const Api = (function(){
 
   const API_KEY = 'AIzaSyAVE0ZXkNk8gcvO4Px2a5_En7CWuRyLvIc';
   const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -25,6 +27,7 @@ const Api = (function(){
       });
       STORE.setVideos(responses);
       callback();
+    
     };
 
     $.getJSON(BASE_URL, requestObject, decorateResponse);
