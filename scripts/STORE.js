@@ -11,6 +11,10 @@ export const STORE = (function(){
   return {
     videos: [],
     setVideos: setVideos,
+    embedded: {},
+    nextPage: '',
+    prevPage: '',
+    searchTerm: '',
   };
 
 

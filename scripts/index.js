@@ -65,11 +65,15 @@
 
 
 import {VideoList} from './VideoList.js';
+import {Carousel} from './carousel.js'
 
 // When DOM is ready:
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
   VideoList.handleFormSubmit();
+  Carousel.handleThumbClicked();
+  Carousel.handleNextClicked();
+  Carousel.handlePrevClicked();
 });
 

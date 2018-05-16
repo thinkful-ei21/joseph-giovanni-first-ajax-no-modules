@@ -10,3 +10,20 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.thumbnail {
+    display: inline-block;
+    cursor: pointer;
+    height: 60px;
+  }
+  
+  a.thumbnail:hover {
+    box-shadow: 5px 5px 5px gray;
+  }
+  
+  .thumbnail img {
+    max-height: 100%;
+  }
+
+  .links {
+      display: block;
+  }
